@@ -7,7 +7,18 @@ class_list = {'0': 'Normal', '1': 'Pneumonia'}
 
 st.title('Pneumonia Detection')
 
-input = open('lrc_xray.pkl', 'rb')
+import os
+
+script_directory = os.path.dirname(os.path.realpath(__file__))
+
+file_path = os.path.join(script_directory, 'lrc_xray.pkl')
+
+if os.path.exists(file_path):
+    with open(file_path, 'rb') as input:
+        # Rest of your code here
+else:
+    print(f"File not found: {file_path}")
+
 model = pkl.load(input)
 
 st.header('Upload an image')
